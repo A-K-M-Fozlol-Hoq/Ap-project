@@ -4,15 +4,16 @@ import java.util.Scanner;
 import java.util.InputMismatchException;
 
 
-public class Main {
+public class Main extends Admin{
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		char willLoopContinue ='y';
 		int userType=0;
 		
 		PrintMessage.printIntro();
-		
-		for (; willLoopContinue =='y' || willLoopContinue =='Y'; ) {
+
+//		for (; willLoopContinue =='y' || willLoopContinue =='Y'; ) {
+		while (willLoopContinue =='y' || willLoopContinue =='Y') {
 			PrintMessage.printLoginType();
 			
 			try {
@@ -30,7 +31,8 @@ public class Main {
 				    // code block
 				    break;
 			  case 3:
-				    // code block
+				    Admin admin = new Admin();
+				    admin.printAdminMenu();
 				    break;
 			  default:
 				  System.out.println("Please enter valid option.");
@@ -40,6 +42,7 @@ public class Main {
 			System.out.println("Please enter y or Y to continue again otherwise enter anything else: ");
 			willLoopContinue = scan.next().charAt(0);
 		}
+		PrintMessage.printBye();
 		scan.close();
 	}
 }
