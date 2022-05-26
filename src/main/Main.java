@@ -4,11 +4,14 @@ import java.util.Scanner;
 import java.util.InputMismatchException;
 
 
-public class Main extends Admin{
+public class Main{
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		char willLoopContinue ='y';
 		int userType=0;
+		boolean isLoggedIn = false;
+		String userName="";
+		String password="";
 		
 		PrintMessage.printIntro();
 
@@ -22,18 +25,30 @@ public class Main extends Admin{
 	            System.out.println("Not an integer, please try again.");
 	        }
 			
-			
+			try {
+				System.out.println("Please Enter your user name: ");
+				userName= scan.nextLine();
+				userName= scan.nextLine();
+				System.out.println("Please enter your password: ");
+				password= scan.nextLine();
+			}
+			catch(Exception e) {
+				System.out.println(e);
+			}
 			switch(userType) {
 			  case 1:
-			    // code block
+				  	Student student = new Student();
 			    break;
 			  case 2:
 				    // code block
 				    break;
 			  case 3:
-//				    Admin admin = new Admin();
-//				    admin.printAdminMenu();
-				  Authentication.checkUser("admin", "admin", "admin");
+				  	
+				    isLoggedIn= Authentication.checkUser("admin", userName, password);
+				    if(isLoggedIn) {
+				    	Admin admin = new Admin();
+					    admin.printAdminMenu();
+				    }
 				    break;
 			  default:
 				  System.out.println("Please enter valid option.");

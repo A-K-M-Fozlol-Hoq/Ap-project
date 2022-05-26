@@ -2,7 +2,7 @@ package main;
 import java.util.Scanner;
 import java.io.File;
 
-public class Admin {
+public class Admin extends Teacher{
 //	utilities function
 	static void print(String str) {
 		System.out.println(str);
@@ -17,21 +17,5 @@ public class Admin {
 		print("\n5)Logout.");
 		selectedMenu = scan.nextInt();
 		print(Integer.toString(selectedMenu));
-//		File db = new File("database");
-//		db.mkdir();
-//		File dir = new File("database/admin");
-//		dir.mkdir();
-//		String path = dir.getAbsolutePath();
-//		File admin = new File(path+"/admin.txt");
-//		File pass = new File(path+"/password.txt");
-//		print(path);
-//		try{
-//			admin.createNewFile();
-//			pass.createNewFile();
-//			print("hello");
-//		}
-//		catch(Exception e) {
-//			System.out.print(e);
-//		}
 	}
 }

@@ -7,19 +7,22 @@ public class Authentication {
 		System.out.println(str);
 	}
 	
-	private static void printloginError() {
+	private static void printLoginError() {
 		print("\n\n---------------Login Error-----------------");
 		print("\nPlease enter right user name and password.");
+		print("\n-----------------------------------------------\n");
 	}
 	
 	public static boolean checkUser(String userName, String passWord) {
-		printloginError();
+		printLoginError();
 		return true;
 	}
 	
 	public static boolean checkUser(String teacherOrAdmin,String userName, String passWord) {
+		String user="";
+		String pass="";
 		if(teacherOrAdmin=="teacher") {
-			printloginError();
+			printLoginError();
 		}else {
 			try {
 				File adminUserNameDatabase = new File("database/admin/admin.txt");
@@ -27,38 +30,36 @@ public class Authentication {
 //				print(adminUserNamePath);
 //				adminUserNamePath = adminUserNamePath.replace("\\", "/");
 //				print (adminUserNamePath);
-				File adminDbFile = new File(adminUserNamePath);
-				Scanner adminUserName = new Scanner(adminDbFile);
+				File adminUserNameDbFile = new File(adminUserNamePath);
+				Scanner adminUserName = new Scanner(adminUserNameDbFile);
 				while(adminUserName.hasNext()) {
-					String user = adminUserName.next();
-					print(user);
+					user = adminUserName.next();
 				}
 				adminUserName.close();
+				
+				
+				File adminPasswordDatabase = new File("database/admin/password.txt");
+				String adminPasswordPath = adminPasswordDatabase.getAbsolutePath();
+				File adminPassDbFile = new File(adminPasswordPath);
+				Scanner adminPassword = new Scanner(adminPassDbFile);
+				while(adminPassword.hasNext()) {
+					pass = adminPassword.next();
+				}
+				adminPassword.close();
 			}
 			catch(Exception e) {
 				System.out.println(e);
 			}
-
-			
-			
-//			File file = new File("F:/varsity sem (7+)/11th sem/AP Project/database/admin/admin.txt");
-//			try {
-//				Scanner scanner = new Scanner(file);
-//				while(scanner.hasNext()) {
-//					String user = scanner.next();
-//					print(user);
-//				}
-//				scanner.close();
-//			}
-//			catch(Exception e) {
-//				System.out.print(e);
-//			}
-//			
-//			print("end");
-			
+			print(user+pass+" "+userName+passWord);
+			if(user.equals(userName) && pass.equals(passWord)) {
+				return true;
+			}else {
+				printLoginError();
+				return false;
+			}
 			
 		}
-		return true;
+		return false;
 	}
 	
 	

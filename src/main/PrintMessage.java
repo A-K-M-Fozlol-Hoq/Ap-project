@@ -1,11 +1,13 @@
 package main;
-
+import java.util.Scanner;
 import java.time.LocalDateTime; 
 import java.time.format.DateTimeFormatter;
-
-
+import java.util.Scanner;
+import java.util.Scanner;
+import java.util.Scanner;
+import java.util.Scanner;
 public class PrintMessage {
-	
+	Scanner scan = new Scanner(System.in);
 	static void print(String str) {
 		System.out.println(str);
 	}
@@ -30,5 +32,4 @@ public class PrintMessage {
 		print("\nProgrammer: A.K.M Fozlol Hoq,\tTasin Shahriar Chowdhury");
 		print("\nInstructor: Santa Maria Shithil, lecturer, Stamford University Bangladesh");
 	}
-	
 }
