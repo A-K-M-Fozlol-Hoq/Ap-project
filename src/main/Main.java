@@ -31,8 +31,9 @@ public class Main extends Admin{
 				    // code block
 				    break;
 			  case 3:
-				    Admin admin = new Admin();
-				    admin.printAdminMenu();
+//				    Admin admin = new Admin();
+//				    admin.printAdminMenu();
+				  Authentication.checkUser("admin", "admin", "admin");
 				    break;
 			  default:
 				  System.out.println("Please enter valid option.");

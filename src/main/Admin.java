@@ -17,21 +17,21 @@ public class Admin {
 		print("\n5)Logout.");
 		selectedMenu = scan.nextInt();
 		print(Integer.toString(selectedMenu));
-		File db = new File("db");
-		db.mkdir();
-		File dir = new File("db/admin");
-		dir.mkdir();
-		String path = dir.getAbsolutePath();
-		File admin = new File(path+"/admin.txt");
-		File pass = new File(path+"/password.txt");
-		print(path);
-		try{
-			admin.createNewFile();
-			pass.createNewFile();
-			print("hello");
-		}
-		catch(Exception e) {
-			System.out.print(e);
-		}
+//		File db = new File("database");
+//		db.mkdir();
+//		File dir = new File("database/admin");
+//		dir.mkdir();
+//		String path = dir.getAbsolutePath();
+//		File admin = new File(path+"/admin.txt");
+//		File pass = new File(path+"/password.txt");
+//		print(path);
+//		try{
+//			admin.createNewFile();
+//			pass.createNewFile();
+//			print("hello");
+//		}
+//		catch(Exception e) {
+//			System.out.print(e);
+//		}
 	}
 }
