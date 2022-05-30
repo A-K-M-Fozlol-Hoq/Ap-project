@@ -17,23 +17,25 @@ public class Main{
 
 //		for (; willLoopContinue =='y' || willLoopContinue =='Y'; ) {
 		while (willLoopContinue =='y' || willLoopContinue =='Y') {
-			PrintMessage.printLoginType();
+			if(isLoggedIn==false) {
+				PrintMessage.printLoginType();
 			
-			try {
-				userType = scan.nextInt();
-	        } catch (InputMismatchException exception) {
-	            System.out.println("Not an integer, please try again.");
-	        }
-			
-			try {
-				System.out.println("Please Enter your user name: ");
-				userName= scan.nextLine();
-				userName= scan.nextLine();
-				System.out.println("Please enter your password: ");
-				password= scan.nextLine();
-			}
-			catch(Exception e) {
-				System.out.println(e);
+				try {
+					userType = scan.nextInt();
+		        } catch (InputMismatchException exception) {
+		            System.out.println("Not an integer, please try again.");
+		        }
+				
+				try {
+					System.out.println("Please Enter your user name: ");
+					userName= scan.nextLine();
+					userName= scan.nextLine();
+					System.out.println("Please enter your password: ");
+					password= scan.nextLine();
+				}
+				catch(Exception e) {
+					System.out.println(e);
+				}
 			}
 			switch(userType) {
 			  case 1:
