@@ -25,4 +25,28 @@ public class DBUtilsHandler {
 		}
 		return allTeachers;
 	}
+	
+	public static String getTeachersNames() {
+		String userNameAndPassword="",userName="",password="",allTeachersNames="";
+		try {
+			File teachersDatabase = new File("database/teacher/teacher.txt");
+			String teachersDatabasePath = teachersDatabase.getAbsolutePath();
+			File teachersDatabaseFile = new File(teachersDatabasePath);
+			Scanner teachersUserNameAndPassword = new Scanner(teachersDatabaseFile);
+			while(teachersUserNameAndPassword.hasNext()) {
+				userName = teachersUserNameAndPassword.next();
+				password = teachersUserNameAndPassword.next();
+				allTeachersNames=allTeachersNames+userName+" ";
+			}
+			teachersUserNameAndPassword.close();
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		}
+		return allTeachersNames;
+	}
+	
+	public static void writeDatabase(String fileLocation, String data) {
+		System.out.println(fileLocation+"\n"+data);
+	}
 }

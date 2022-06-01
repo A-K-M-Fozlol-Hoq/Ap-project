@@ -82,33 +82,46 @@ public class Admin extends Teacher{
 	
 	
 	private void createproject() {
-		String projectName="default", teacherName="";
-		int count=0,index=1;
+		String projectName="default", teacherName="", studentID="default", studentPassword="default";
+		int index=0, selectedTeacherInput=0, totalStudents=0;
 		print("Please enter project name: ");
 		projectName=scan.nextLine();
 		projectName=scan.nextLine();
-		String allTeachers = DBUtilsHandler.getTeachers();
-		print(projectName);
-//		print(allTeachers);
-		String[] findTeachersName = allTeachers.split(" ");
-		for(count =0; count<findTeachersName.length; count = count+1) {
-//			if(count %2 ==0) {
-//				print(findTeachersName[count]);
-//			}
-			print(count+findTeachersName[count]+index+"---"+count %2);
+		String allTeachersNames = DBUtilsHandler.getTeachersNames();
+		print("Select your preferred project instructor/teacher: \n");
+		String[] allTeachersNamesArray = allTeachersNames.split(" ");
+		for(index =0; index < allTeachersNamesArray.length; index = index+1) {
+			print(index+1+". "+allTeachersNamesArray[index]);
 		}
-       
-            
-//		while(findTeachersName.hasNext()) {
-//			count=count+1;
-//			if(count %2 !=0) {
-//				teacherName = findTeachersName.next();
-//				System.out.print(index);
-//				System.out.print(count);
-//				System.out.print(count %2);
-//				print(". "+teacherName);
-//				index=index+1;
-//			}
-//		}
+		selectedTeacherInput= scan.nextInt();
+        print("How many students you want to add that project group:");
+        totalStudents= scan.nextInt();
+        teacherName= allTeachersNamesArray[selectedTeacherInput-1];
+        Student[] allStudentsInfo = new Student[totalStudents] ;  
+        print("Enter all students userName and password for the group: ");
+        studentID=scan.nextLine();
+        for(index=0; index<totalStudents; index=index+1) {
+        	studentID=scan.nextLine();
+        	studentPassword= scan.nextLine();
+        	Student student = new Student(studentID, studentPassword);
+        	allStudentsInfo[index]= student;
+        }
+        
+        Student.createProject(projectName, teacherName, allStudentsInfo, totalStudents);
+        
+        
+        
+        
+        
+        
+//        for(index=0; index<totalStudents; index=index+1) {
+//        	studentID = allStudentsInfo[index].getID();
+//        	studentPassword = allStudentsInfo[index].getPassword();
+//        }
+        
+//        format to save db:
+//        1.teacher name
+//        2. studenaid pass options marking
+        
 	}
 }
