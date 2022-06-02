@@ -24,6 +24,8 @@ public class Main{
 					userType = scan.nextInt();
 		        } catch (InputMismatchException exception) {
 		            System.out.println("Not an integer, please try again.");
+		            PrintMessage.printBye();
+				    System.exit(0);
 		        }
 				
 				try {

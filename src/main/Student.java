@@ -19,22 +19,22 @@ public class Student {
 		return this.password;
 	}
 	
-	public static void createProject(String projectName, String teacherName, Student[] allStudentsInfo, int totalStudents) {
-		String data = teacherName+"\n", id="",pass="";
+	public static void createProject(String projectName, Student[] allStudentsInfo, int totalStudents) {
+		String data = "", id="",pass="";
 		for(int i=0; i<totalStudents; i++) {
 			id=allStudentsInfo[i].getID();
 			pass = allStudentsInfo[i].getPassword();
 			data = data + id+" "+pass+" "+"0000000000"+" "+"0"+"\n";
 		}
-		DBUtilsHandler.writeDatabase("database/project/"+projectName+".txt", data);
+		DBUtilsHandler.writeDatabase("database/project/"+projectName+".txt", data,"Project created successfully!");
 	}
 	
-	public int calculateMark(int[] work) {
-		
-		return 1;
-	}
-	public int calculateMark(int[] mainTask, int[] extraTask) {
-		
-		return 1;
-	}
+//	public int calculateMark(int[] work) {
+//		
+//		return 1;
+//	}
+//	public int calculateMark(int[] mainTask, int[] extraTask) {
+//		
+//		return 1;
+//	}
 }

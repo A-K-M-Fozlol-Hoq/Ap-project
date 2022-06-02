@@ -23,14 +23,45 @@ public class Authentication {
 		String user="";
 		String pass="";
 		if(teacherOrAdmin=="teacher") {
+			
+			
+//			String userNameAndPassword="",userName="",password="",allTeachers="";
+//			try {
+//				File teachersDatabase = new File("database/teacher/teacher.txt");
+//				String teachersDatabasePath = teachersDatabase.getAbsolutePath();
+//				File teachersDatabaseFile = new File(teachersDatabasePath);
+//				Scanner teachersUserNameAndPassword = new Scanner(teachersDatabaseFile);
+//				while(teachersUserNameAndPassword.hasNext()) {
+//					userName = teachersUserNameAndPassword.next();
+//					password = teachersUserNameAndPassword.next();
+//					userNameAndPassword=  userName+" "+password+"\n";
+//					allTeachers=allTeachers+userNameAndPassword;
+//				}
+//				teachersUserNameAndPassword.close();
+//			}
+//			catch(Exception e) {
+//				System.out.println(e);
+//			}
+//			return allTeachers;
+//			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			printLoginError();
 		}else {
 			try {
 				File adminUserNameDatabase = new File("database/admin/admin.txt");
 				String adminUserNamePath = adminUserNameDatabase.getAbsolutePath();
-//				print(adminUserNamePath);
-//				adminUserNamePath = adminUserNamePath.replace("\\", "/");
-//				print (adminUserNamePath);
 				File adminUserNameDbFile = new File(adminUserNamePath);
 				Scanner adminUserName = new Scanner(adminUserNameDbFile);
 				while(adminUserName.hasNext()) {

@@ -46,7 +46,42 @@ public class DBUtilsHandler {
 		return allTeachersNames;
 	}
 	
-	public static void writeDatabase(String fileLocation, String data) {
-		System.out.println(fileLocation+"\n"+data);
+	public static void writeDatabase(String fileLocation, String data,String successMessage) {
+//		System.out.println(fileLocation+"\n"+data);
+		try {
+		      FileWriter myWriter = new FileWriter(fileLocation);
+		      myWriter.write(data);
+		      myWriter.close();
+		      System.out.println(successMessage);
+		} catch (Exception e) {
+		      System.out.println(e);
+	    }
+	}
+	
+	public static void addNewProjectAtTeachersDatabase(String teacherName, String newProject) {
+//		System.out.println(teacherName+"\n"+newProject);
+		String existingProjects= DBUtilsHandler.readFile("database/teacher/"+teacherName+".txt");
+		String allProjects = existingProjects+" "+newProject;
+		writeDatabase("database/teacher/"+teacherName+".txt", allProjects,"Project updated successfully!");
+	}
+	
+	public static String readFile(String filePath) {
+		String input="",data="";
+		try {
+			File databaseLocation = new File(filePath);
+			String databaseAbsolutePath = databaseLocation.getAbsolutePath();
+			File databaseFile = new File(databaseAbsolutePath);
+			Scanner scan = new Scanner(databaseFile);
+			while(scan.hasNext()) {
+				input = scan.next();
+				data=data+" "+input;
+			}
+			scan.close();
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		}
+		return data;
+		
 	}
 }

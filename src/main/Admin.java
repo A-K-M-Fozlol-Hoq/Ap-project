@@ -22,7 +22,7 @@ public class Admin extends Teacher{
 		    	createproject();
 		        break;
 		    case 2:
-			  	print("Enter teacher's user name: \n[Pro tip: Don't use space]:");
+			  	print("Enter unique teacher's user name: \n[Pro tip: Don't use space]:");
 			  	String teacherUserName= scan.nextLine();
 			    teacherUserName=scan.nextLine();
 			    print("Enter teacher's password: \n[Pro tip: Don't use space]:");
@@ -31,10 +31,10 @@ public class Admin extends Teacher{
 			    addTeacher(teacher);
 			    break;
 		    case 3:
-			  	
+			  	changeUserName();
 			    break;
 		    case 4:
-			  	
+			  	changePassword();
 			    break;
 		    case 5:
 		    	print("\nLogged out successfully!\n");
@@ -49,24 +49,6 @@ public class Admin extends Teacher{
 	
 //	overriding addTeacher method of Teacher class
 	public Teacher addTeacher(Teacher teacher) {		
-//		String existingTeachers="",userNameAndPassword="",userName="",password="",allTeachers="";
-//		try {
-//			File teachersDatabase = new File("database/teacher/teacher.txt");
-//			String teachersDatabasePath = teachersDatabase.getAbsolutePath();
-//			File teachersDatabaseFile = new File(teachersDatabasePath);
-//			Scanner teachersUserNameAndPassword = new Scanner(teachersDatabaseFile);
-//			while(teachersUserNameAndPassword.hasNext()) {
-//				userName = teachersUserNameAndPassword.next();
-//				password = teachersUserNameAndPassword.next();
-//				userNameAndPassword=  userName+" "+password+"\n";
-//				existingTeachers=existingTeachers+userNameAndPassword;
-//			}
-//			teachersUserNameAndPassword.close();
-//		}
-//		catch(Exception e) {
-//			System.out.println(e);
-//		}
-//		allTeachers= existingTeachers+teacher.getUserName()+" "+teacher.getPassword()+"\n";
 		String existingTeachers = DBUtilsHandler.getTeachers();
 		String allTeachers= existingTeachers+teacher.getUserName()+" "+teacher.getPassword()+"\n";
 		try {
@@ -84,7 +66,7 @@ public class Admin extends Teacher{
 	private void createproject() {
 		String projectName="default", teacherName="", studentID="default", studentPassword="default";
 		int index=0, selectedTeacherInput=0, totalStudents=0;
-		print("Please enter project name: ");
+		print("Please enter unique project name: ");
 		projectName=scan.nextLine();
 		projectName=scan.nextLine();
 		String allTeachersNames = DBUtilsHandler.getTeachersNames();
@@ -107,21 +89,26 @@ public class Admin extends Teacher{
         	allStudentsInfo[index]= student;
         }
         
-        Student.createProject(projectName, teacherName, allStudentsInfo, totalStudents);
-        
-        
-        
-        
-        
-        
-//        for(index=0; index<totalStudents; index=index+1) {
-//        	studentID = allStudentsInfo[index].getID();
-//        	studentPassword = allStudentsInfo[index].getPassword();
-//        }
-        
-//        format to save db:
-//        1.teacher name
-//        2. studenaid pass options marking
+        Student.createProject(projectName, allStudentsInfo, totalStudents);
+        DBUtilsHandler.addNewProjectAtTeachersDatabase(teacherName, projectName);
         
 	}
+	
+	private void changeUserName() {
+		String newUserName="";
+		print("Please enter new user name: ");
+		newUserName= scan.nextLine();
+		newUserName= scan.nextLine();
+		DBUtilsHandler.writeDatabase("database/admin/admin.txt", newUserName, "User name updated successfully!");
+	}
+	
+	private void changePassword() {
+		String newPassword="";
+		print("Please enter new password: ");
+		newPassword= scan.nextLine();
+		newPassword= scan.nextLine();
+		DBUtilsHandler.writeDatabase("database/admin/password.txt", newPassword, "Password updated successfully!");
+	}
+	
+	
 }
