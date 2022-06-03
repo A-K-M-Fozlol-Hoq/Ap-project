@@ -13,7 +13,7 @@ public class Admin extends Teacher{
 	Scanner scan = new Scanner(System.in);
 	
 	void printAdminMenu() {
-		print("Please enter your option: ");
+		print("Please enter your option: \n");
 		print("1)Create a new project. \n2)Add teacher. \n3)Change User name. \n4)Change Password.");
 		print("\n5)Logout.");
 		selectedMenu = scan.nextInt();

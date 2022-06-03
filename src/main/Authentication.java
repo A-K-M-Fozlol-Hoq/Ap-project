@@ -15,35 +15,33 @@ public class Authentication {
 	}
 	
 	public static boolean checkUser(String userName, String passWord) {
-		printLoginError();
-		return true;
-	}
-	
-	public static boolean checkUser(String teacherOrAdmin,String userName, String passWord) {
 		String user="";
 		String pass="";
-		if(teacherOrAdmin=="teacher") {
-			try {
-				File teachersDatabase = new File("database/teacher/teacher.txt");
-				String teachersDatabasePath = teachersDatabase.getAbsolutePath();
-				File teachersDatabaseFile = new File(teachersDatabasePath);
-				Scanner teachersUserNameAndPassword = new Scanner(teachersDatabaseFile);
-				while(teachersUserNameAndPassword.hasNext()) {
-					user = teachersUserNameAndPassword.next();
-					pass = teachersUserNameAndPassword.next();
-					if(user.equals(userName) && pass.equals(passWord)) {
-						return true;
-					}
+		try {
+			File teachersDatabase = new File("database/teacher/teacher.txt");
+			String teachersDatabasePath = teachersDatabase.getAbsolutePath();
+			File teachersDatabaseFile = new File(teachersDatabasePath);
+			Scanner teachersUserNameAndPassword = new Scanner(teachersDatabaseFile);
+			while(teachersUserNameAndPassword.hasNext()) {
+				user = teachersUserNameAndPassword.next();
+				pass = teachersUserNameAndPassword.next();
+				if(user.equals(userName) && pass.equals(passWord)) {
+					return true;
 				}
-				teachersUserNameAndPassword.close();
 			}
-			catch(Exception e) {
-				System.out.println(e);
-			}
-			printLoginError();
-			return false;
-			
-		}else {
+			teachersUserNameAndPassword.close();
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		}
+		printLoginError();
+		return false;
+	}
+	
+	public static boolean checkUser(String admin,String userName, String passWord) {
+		String user="";
+		String pass="";
+		if(admin=="admin") {
 			try {
 				File adminUserNameDatabase = new File("database/admin/admin.txt");
 				String adminUserNamePath = adminUserNameDatabase.getAbsolutePath();
@@ -74,6 +72,9 @@ public class Authentication {
 				printLoginError();
 				return false;
 			}
+			
+		}else {
+			return false;
 			
 		}
 	}

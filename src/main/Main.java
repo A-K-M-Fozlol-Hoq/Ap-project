@@ -24,8 +24,7 @@ public class Main{
 					userType = scan.nextInt();
 		        } catch (InputMismatchException exception) {
 		            System.out.println("Not an integer, please try again.");
-		            PrintMessage.printBye();
-				    System.exit(0);
+				    PrintMessage.closeProgram();
 		        }
 				
 				try {
@@ -41,14 +40,19 @@ public class Main{
 			}
 			switch(userType) {
 			  case 1:
-				  	Student student = new Student();
-			    break;
+				  String projectName="";
+				   System.out.println("Enter project name[pro tips: project name is case sensetive]: ");
+				   projectName=scan.nextLine();
+				   Student student = new Student(userName, password);
+				   String result = student.getResult(projectName, "database/project/"+projectName+".txt");
+				   System.out.println("You obtained "+result+" marks out of 10! Best of luck!\n");
+			       break;
 			  case 2:
-				   isLoggedIn= Authentication.checkUser("teacher", userName, password);
+				   isLoggedIn= Authentication.checkUser(userName, password);
 				   if(isLoggedIn) {
 					   Teacher teacher = new Teacher(userName, password);
 					   String selectedCourse = teacher.selectCourse();
-						System.out.println(selectedCourse);
+					   teacher.printMenu(selectedCourse);
 				   }
 				    break;
 			  case 3:

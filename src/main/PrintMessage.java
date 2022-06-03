@@ -2,10 +2,7 @@ package main;
 import java.util.Scanner;
 import java.time.LocalDateTime; 
 import java.time.format.DateTimeFormatter;
-import java.util.Scanner;
-import java.util.Scanner;
-import java.util.Scanner;
-import java.util.Scanner;
+
 public class PrintMessage {
 	Scanner scan = new Scanner(System.in);
 	static void print(String str) {
@@ -29,7 +26,34 @@ public class PrintMessage {
 
 	public static void printBye() {
 		print("\n\n---------------GOOD BYE-----------------");
-		print("\nProgrammer: A.K.M Fozlol Hoq,\tTasin Shahriar Chowdhury");
+		print("\nProgrammer: Tasin Shahriar Chowdhury,\tA.K.M Fozlol Hoq");
 		print("\nInstructor: Santa Maria Shithil, lecturer, Stamford University Bangladesh");
 	}
+	public static void closeProgram() {
+		PrintMessage.printBye();
+        System.exit(0);
+	}
+	
+	public static  int  calculateMark(String task) {
+//		0010111011
+		int total=0;
+		for (int i = 0; i < task.length(); i++) {
+            if(task.charAt(i) =='1') {
+            	total=total+1;
+            }
+        }
+		return total;
+	}
+	public static int calculateMark(String task, int bonus) {
+//		1001111101 , 1 = 8
+		int total=bonus;
+		for (int i = 0; i < task.length(); i++) {
+            if(task.charAt(i) =='1') {
+            	total=total+1;
+            }
+        }
+		return total;
+	}
+	
+	
 }
