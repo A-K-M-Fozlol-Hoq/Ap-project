@@ -1,14 +1,22 @@
 package main;
 
 public class Student {
-	private String id,password;
+	private String id,password,result;
 	Student(){
 		id="";
 		password="";
+		result="";
 	}
 	Student(String id, String password){
 		this.id=id;
 		this.password=password;
+		result="";
+	}
+	
+	Student(String id, String password, String result){
+		this.id=id;
+		this.password=password;
+		this.result=result;
 	}
 	
 	String getID() {
@@ -17,6 +25,10 @@ public class Student {
 	
 	String getPassword() {
 		return this.password;
+	}
+	
+	String getResult() {
+		return this.result;
 	}
 	
 	public static void createProject(String projectName, Student[] allStudentsInfo, int totalStudents) {
@@ -28,6 +40,7 @@ public class Student {
 		}
 		DBUtilsHandler.writeDatabase("database/project/"+projectName+".txt", data,"Project created successfully!");
 	}
+	
 	
 //	public int calculateMark(int[] work) {
 //		

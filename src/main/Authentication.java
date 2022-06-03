@@ -23,41 +23,26 @@ public class Authentication {
 		String user="";
 		String pass="";
 		if(teacherOrAdmin=="teacher") {
-			
-			
-//			String userNameAndPassword="",userName="",password="",allTeachers="";
-//			try {
-//				File teachersDatabase = new File("database/teacher/teacher.txt");
-//				String teachersDatabasePath = teachersDatabase.getAbsolutePath();
-//				File teachersDatabaseFile = new File(teachersDatabasePath);
-//				Scanner teachersUserNameAndPassword = new Scanner(teachersDatabaseFile);
-//				while(teachersUserNameAndPassword.hasNext()) {
-//					userName = teachersUserNameAndPassword.next();
-//					password = teachersUserNameAndPassword.next();
-//					userNameAndPassword=  userName+" "+password+"\n";
-//					allTeachers=allTeachers+userNameAndPassword;
-//				}
-//				teachersUserNameAndPassword.close();
-//			}
-//			catch(Exception e) {
-//				System.out.println(e);
-//			}
-//			return allTeachers;
-//			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+			try {
+				File teachersDatabase = new File("database/teacher/teacher.txt");
+				String teachersDatabasePath = teachersDatabase.getAbsolutePath();
+				File teachersDatabaseFile = new File(teachersDatabasePath);
+				Scanner teachersUserNameAndPassword = new Scanner(teachersDatabaseFile);
+				while(teachersUserNameAndPassword.hasNext()) {
+					user = teachersUserNameAndPassword.next();
+					pass = teachersUserNameAndPassword.next();
+					if(user.equals(userName) && pass.equals(passWord)) {
+						return true;
+					}
+				}
+				teachersUserNameAndPassword.close();
+			}
+			catch(Exception e) {
+				System.out.println(e);
+			}
 			printLoginError();
+			return false;
+			
 		}else {
 			try {
 				File adminUserNameDatabase = new File("database/admin/admin.txt");
@@ -91,7 +76,6 @@ public class Authentication {
 			}
 			
 		}
-		return false;
 	}
 	
 	

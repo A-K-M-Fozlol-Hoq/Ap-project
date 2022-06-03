@@ -44,7 +44,12 @@ public class Main{
 				  	Student student = new Student();
 			    break;
 			  case 2:
-				    // code block
+				   isLoggedIn= Authentication.checkUser("teacher", userName, password);
+				   if(isLoggedIn) {
+					   Teacher teacher = new Teacher(userName, password);
+					   String selectedCourse = teacher.selectCourse();
+						System.out.println(selectedCourse);
+				   }
 				    break;
 			  case 3:
 				  	
